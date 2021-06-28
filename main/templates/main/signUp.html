@@ -1,0 +1,159 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UIkit CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/css/uikit.min.css" />
+    <title>KIT hub</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{%static 'apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{%static 'favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{%static 'favicon-16x16.png' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+        #logo {
+                font-family: 'Fredoka One', cursive;
+                {% comment %} color: #00b0ff; {% endcomment %}
+                font-size:35px;
+        }
+
+        body .uk-button,.uk-input {
+            border-radius: 5px !important;
+        }
+        body .uk-card, img, .uk-navbar-dropdown {
+            border-radius: 10px !important;
+        }
+
+        .logoAnim {
+        -webkit-animation: animation 1000ms linear both;
+        animation: animation 1000ms linear both;
+        }
+
+        /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bs%3A%5B%7BT%3A%22c%22%2Ce%3A%22b%22%2Cd%3A1000%2CD%3A0%2Cf%3A%7Bx%3A0.5%2Cy%3A1%7D%2Ct%3A%7Bx%3A1%2Cy%3A1%7D%2Cs%3A1%2Cb%3A4%7D%5D%7D */
+
+        @-webkit-keyframes animation { 
+        0% { -webkit-transform: matrix3d(0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        4.7% { -webkit-transform: matrix3d(0.725, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.725, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        9.41% { -webkit-transform: matrix3d(0.942, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.942, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        14.11% { -webkit-transform: matrix3d(1.07, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.07, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        18.72% { -webkit-transform: matrix3d(1.106, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.106, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        24.32% { -webkit-transform: matrix3d(1.075, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.075, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        29.93% { -webkit-transform: matrix3d(1.024, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.024, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        35.54% { -webkit-transform: matrix3d(0.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        41.04% { -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        52.15% { -webkit-transform: matrix3d(0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        63.26% { -webkit-transform: matrix3d(1.004, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.004, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        85.49% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+        }
+
+        @keyframes animation { 
+        0% { -webkit-transform: matrix3d(0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        4.7% { -webkit-transform: matrix3d(0.725, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.725, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        9.41% { -webkit-transform: matrix3d(0.942, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.942, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        14.11% { -webkit-transform: matrix3d(1.07, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.07, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        18.72% { -webkit-transform: matrix3d(1.106, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.106, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        24.32% { -webkit-transform: matrix3d(1.075, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.075, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        29.93% { -webkit-transform: matrix3d(1.024, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.024, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        35.54% { -webkit-transform: matrix3d(0.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        41.04% { -webkit-transform: matrix3d(0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        52.15% { -webkit-transform: matrix3d(0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        63.26% { -webkit-transform: matrix3d(1.004, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.004, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        85.49% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+        }
+
+    </style>
+</head>
+<body>
+<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo uk-text-primary logoAnim" id="logo" href="{% url 'home' %}">KIT hub</a>
+            </div>
+        </nav>
+
+{% block form %}
+
+        <div class="uk-container">
+<div class="uk-position-center">
+    <div class="uk-card uk-card-hover uk-card-body">
+    <div class="uk-margin-small">
+        <div class="uk-text-lead">
+            Sign Up
+        </div>
+    </div>
+    <form action="#" method="post" class="uk-form-stacked">
+    
+        {% csrf_token %}
+        <div class="uk-margin">
+        <label class="uk-form-label">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Password:</label>
+            {{ form.password1 }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Re-enter password:</label>
+            {{ form.password2 }}
+        </div>
+        <input type="submit" class="uk-button uk-button-primary" value="submit">
+        
+    </form>
+    <div class="uk-margin-small"><div class="uk-text-meta">or</div></div>
+    <div class="uk-margin-small">
+        <a class="uk-button uk-button-primary" href="{% provider_login_url 'google' %}">Continue with Google</a>
+    </div>
+    <div class="uk-margin-small">
+        <div class="">Already have an account? <a href="{% url 'login' %}">Login</a></div>
+    </div>
+    <div class="uk-margin-small">
+        <a href="mailto:notesserver001@gmail.com?subject=Bug report&body=Bug encountered:%0D%0A%0D%0ASteps to reproduce the bug:%0D%0A%0D%0A">Report a bug</a>
+    </div>
+        </div>
+    </div>
+    <div class="uk-margin-medium uk-position-small uk-position-bottom-center">
+        {% if messages %}
+        <ul class="uk-list">
+            {% for message in messages.error %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <div class="uk-alert-danger" uk-alert>
+                    {{ message }}
+                 </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+        {% endif %}
+    </div>
+    
+    </div>
+    <script>
+        document.getElementById('id_username').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_email').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_password1').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_password2').className = 'uk-input uk-form-width-large'
+    </script>
+
+{% endblock form %}
+<div class="uk-position-bottom-center">
+<div class="uk-margin-large">
+    
+</div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>

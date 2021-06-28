@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="uk-container">
+    <div class="uk-position-center">
+    <div class="uk-card uk-card-hover uk-card-body">
+    <div class="uk-margin-small">
+        <div class="uk-text-lead">
+            Apply for a moderator account
+        </div>
+        <div class="uk-text-meta">
+            Usrs with a moderator account can upload notes.
+        </div>
+    </div>
+    {% if applied %}
+        <div class="uk-text-meta">
+            Your application is being reviewed. Please be patient.
+        </div>
+    {% else %}
+    <form action="#" method="POST" class="uk-form-stacked">
+    {% csrf_token %}
+        <div class="uk-margin">
+        <label class="uk-form-label">Description (optional):</label>
+            {{ modrequest.description }}
+        </div>
+        <input type="submit" class="uk-button uk-button-primary" value="Apply">
+    </form>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+    <script>
+        {% comment %} document.getElementById('id_name').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_label').className = 'uk-input uk-form-width-large' {% endcomment %}
+        document.getElementById('id_description').className = 'uk-input uk-form-width-large'
+        {% comment %} document.getElementById('id_user').className = 'uk-input uk-form-width-large' {% endcomment %}
+        {% comment %} document.getElementById('id_password2').className = 'uk-input uk-form-width-large' {% endcomment %}
+    </script>
+    <!-- UIkit JS -->
+
+
+
+
+{% endblock content %}

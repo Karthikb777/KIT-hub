@@ -1,0 +1,80 @@
+{% extends 'main/signUp.html' %}
+
+
+{% load i18n %}
+
+
+{% block form %}
+
+
+
+
+{% comment %} <form class="signup" id="signup_form" method="post" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+</form> {% endcomment %}
+
+
+
+
+        <div class="uk-container">
+<div class="uk-position-center">
+    <div class="uk-card uk-card-hover uk-card-body">
+    <div class="uk-margin-small">
+        <div class="uk-text-lead">
+            Sign Up
+        </div>
+    </div>
+    <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+    <form action="{% url 'socialaccount_signup' %}" method="post" class="uk-form-stacked">
+    
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <div class="uk-margin-small">
+        <label class="uk-form-label">Username:</label>
+        {{ form.username }}
+        </div>
+        <div class="uk-margin-small">
+        <label class="uk-form-label">Email:</label>
+        {{ form.email }}
+        </div> {% endcomment %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="uk-button uk-button-primary" type="submit">{% trans "Sign Up" %}</button>
+    </form>
+    
+    {% comment %} <div class="uk-margin-small">
+        <a class="uk-button uk-button-primary" href="{% provider_login_url 'google' %}">Continue with Google</a>
+    </div> {% endcomment %}
+    
+        </div>
+    </div>
+    <div class="uk-margin-medium uk-position-small uk-position-bottom-center">
+        {% if messages %}
+        <ul class="uk-list">
+            {% for message in messages.error %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <div class="uk-alert-danger" uk-alert>
+                    {{ message }}
+                 </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+        {% endif %}
+    </div>
+    </div>
+    <script>
+        document.getElementById('id_username').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_email').className = 'uk-input uk-form-width-large'
+    </script>
+
+
+
+{% endblock form %}

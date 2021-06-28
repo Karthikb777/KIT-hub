@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="uk-container">
+    <div class="uk-position-center">
+    <div class="uk-card uk-card-hover uk-card-body">
+    <div class="uk-margin-small">
+        <div class="uk-text-lead">
+            Search
+        </div>
+    </div>
+    <form action="#" method="POST" class="uk-form-stacked">
+    {% csrf_token %}
+        <div class="uk-margin">
+        <label class="uk-form-label">Search by name:</label>
+            {{ filter.form.name }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Search by label:</label>
+            {{ filter.form.label }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Search by author:</label>
+            {{ filter.form.user }}
+        </div>
+        <input type="submit" class="uk-button uk-button-primary" value="Search">
+    </form>
+    </div>
+    </div>
+    </div>
+    <script>
+        document.getElementById('id_name').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_label').className = 'uk-input uk-form-width-large'
+        {% comment %} document.getElementById('id_email').className = 'uk-input uk-form-width-large' {% endcomment %}
+        document.getElementById('id_user').className = 'uk-input uk-form-width-large'
+        {% comment %} document.getElementById('id_password2').className = 'uk-input uk-form-width-large' {% endcomment %}
+    </script>
+    <!-- UIkit JS -->
+
+
+
+
+{% endblock content %}

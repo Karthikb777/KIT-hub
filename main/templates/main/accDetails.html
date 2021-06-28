@@ -1,0 +1,94 @@
+{% extends 'main/base.html' %}
+{% load groupChecker %}
+{% block content %}
+<div class="uk-container">
+<div class="uk-margin-small-top uk-margin-small-bottom">
+        <div class="uk-margin-small-bottom">
+        {% if request.user.socialaccount_set.all.0.get_avatar_url %}
+                    <img class="dp" src="{{ request.user.socialaccount_set.all.0.get_avatar_url }}" height="60px" width="60px" alt="" srcset="">
+        {% endif %}
+        </div>
+        <div class="uk-text-lead">
+            Hello, {{ request.user }}!
+        </div>
+        <div class="uk-text-meta uk-margin-small-bottom">
+            Account type: {% if request.user|userInGrp:'Moderator' %}Moderator{% else %}User{% endif %}
+        </div>
+    </div>
+    {% if request.user|userInGrp:'Moderator' %}
+<div class="uk-margin-medium-bottom">
+        <div class="uk-text-lead">
+            Notes uploaded by you:
+        </div>
+        <div class="uk-margin-small">
+        <a href="{% url 'noteUpload' %}" class="uk-button uk-button-primary" uk-tooltip="Add a new note"><span uk-icon="plus"></span>
+         Add new</a>
+    </div>
+        <div class="uk-text-meta">
+            You can edit or delete the notes and their details.
+        </div>
+    </div>
+    {% endif %}
+    {% if details %}
+<div class="uk-grid-medium uk-text-break uk-child-width-1-3@s" uk-grid="masonry: true">
+    {% for item in details %}
+        <div>
+        <div>
+        <a href="{% url 'noteDetails' item.name %}" class="uk-link-reset">
+            <div class="uk-card uk-card-default uk-card-hover logoAnim">
+                {% comment %} <div class="uk-card-media-top">
+                    <img src="{{ item.coverImage.url }}" alt="">
+                </div> {% endcomment %}
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title uk-margin-small-top">{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <div class="uk-card-badge uk-label">{{ item.label }}</div>
+                    <div class="uk-margin-small">
+                    <a href="{% url 'updateNote' item.name item.id %}" class="uk-button uk-button-primary">Edit</a>
+                    </div>
+                    <div class="uk-margin-small">
+                    <a href="{% url 'deleteNote' item.name item.id %}" class="uk-button uk-button-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>  
+        </div>  
+    {% endfor %}
+</div>
+{% endif %}
+    <div class="uk-margin-medium">
+        <div class="uk-text-lead">
+            Notes downloaded by you:
+        </div>
+    </div>
+        
+<div class="uk-grid-medium uk-text-break uk-child-width-1-3@s" uk-grid="masonry: true">
+    {% for item in downloads %}
+        <div>
+        <div>
+        <a href="{% url 'noteDetails' item.note.name %}" class="uk-link-reset">
+            <div class="uk-card uk-card-default uk-card-hover logoAnim">
+                {% comment %} <div class="uk-card-media-top">
+                    <img src="{{ item.coverImage.url }}" alt="">
+                </div> {% endcomment %}
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title uk-margin-small-top">{{ item.note.name }}</h3>
+                    <p>{{ item.note.description }}</p>
+                    <div class="uk-card-badge uk-label">{{ item.note.label }}</div>
+                    <div class="uk-grid-small uk-text-break uk-child-width-2-1@s" uk-grid>
+                        <div>
+                            <a href="{% url 'noteDownload' item.note.name %}" class="uk-button uk-button-primary">Download again</a>
+                        </div>
+                        <div>
+                            <a href="{% url 'deleteNoteHistory' item.note.name %}" class="uk-button uk-button-danger">Remove from history</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>  
+        </div>  
+    {% endfor %}
+</div>
+{% endblock content %}

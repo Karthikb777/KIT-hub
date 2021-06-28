@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<div class="uk-container">
+<div class="uk-position-center">
+    <div class="uk-margin-small">
+        {% if request.path == '/noteUpload/' %}
+        <div class="uk-text-lead">
+            Note upload:
+        </div>
+        {% else %}
+        <div class="uk-text-lead">
+            Note update:
+        </div>
+        {% endif %}
+    </div>
+    <form action="#" method="post" class="uk-form-stacked" enctype="multipart/form-data">
+    <fieldset class="uk-fieldset">
+        {% csrf_token %}
+        <div class="uk-margin">
+        <label class="uk-form-label">Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Description:</label>
+            {{ form.description }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Notes file:</label>
+        <div class="js-upload" uk-form-custom>
+            {{ form.file }}
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
+        </div>
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Cover image:</label>
+        <div class="js-upload" uk-form-custom>
+            {{ form.coverImage }}
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
+        </div>
+        </div>
+        {% comment %} <div class="uk-margin">
+            {{ form.file }}
+        </div> {% endcomment %}
+        {% comment %} <div class="uk-margin">
+            {{ form.coverImage }}
+        </div> {% endcomment %}
+        <div class="uk-margin">
+        <label class="uk-form-label">Label:</label>
+            {{ form.label }}
+        </div>
+        <input type="submit" class="uk-button uk-button-primary" value="submit">
+        <a href="{% url 'home' %}" class="uk-button uk-button-danger">Cancel</a>
+        </fieldset>
+    </form>
+
+    <div class="uk-margin-medium uk-position-small uk-position-bottom-center">
+        {% if messages %}
+        <ul class="uk-list">
+            {% for message in messages.error %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <div class="uk-alert-danger" uk-alert>
+                    {{ message }}
+                 </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+        {% endif %}
+    </div>
+
+    </div>
+    </div>
+    <script>
+        document.getElementById('id_name').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_description').className = 'uk-input uk-form-width-large'
+        {% comment %} document.getElementById('id_file').className = 'uk-input uk-form-width-medium' {% endcomment %}
+        {% comment %} document.getElementById('id_coverImage').className = 'uk-input uk-form-width-medium' {% endcomment %}
+        document.getElementById('id_label').className = 'uk-input uk-form-width-large'
+    </script>
+{% endblock content %}

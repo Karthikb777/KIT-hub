@@ -1,0 +1,62 @@
+{% extends 'main/signUp.html' %}
+{% load socialaccount %}
+
+{% block form %}
+
+ <div class="uk-container">
+<div class="uk-position-center">
+    <div class="uk-card uk-card-hover uk-card-body">
+    <div class="uk-margin-small">
+        <div class="uk-text-lead">
+            Login
+        </div>
+    </div>
+    <form action="#" method="post" class="uk-form-stacked">
+        {% csrf_token %}
+        <div class="uk-margin">
+        <label class="uk-form-label">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="uk-margin">
+        <label class="uk-form-label">Password:</label>
+            {{ form.password }}
+        </div>
+        <input type="submit" class="uk-button uk-button-primary" value="Login">
+    </form>
+    <div class="uk-margin-small"><div class="uk-text-meta">or</div></div>
+    <div class="uk-margin-small">
+        <a class="uk-button uk-button-primary" href="{% provider_login_url 'google' %}">Continue with Google</a>
+    </div>
+    <div class="uk-margin-small">
+        <div class="">Don't have an account? <a href="{% url 'signUp' %}">Create one</a></div>
+    </div>
+    
+    <div class="uk-margin-small">
+        <a href="{% url 'reset_password' %}">Forgot password?</a>
+    </div>
+    <div class="uk-margin-small">
+        <a href="mailto:notesserver001@gmail.com?subject=Bug report&body=Bug encountered:%0D%0A%0D%0ASteps to reproduce the bug:%0D%0A%0D%0A">Report a bug</a>
+    </div>
+    </div>          
+    </div>
+    <div class="uk-margin-medium uk-position-small uk-position-bottom-center">
+        {% if messages %}
+        <ul class="uk-list">
+            {% for message in messages.error %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <div class="uk-alert-danger" uk-alert>
+                    {{ message }}
+                 </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+        {% endif %}
+    </div>
+    </div>
+    <script>
+        document.getElementById('id_username').className = 'uk-input uk-form-width-large'
+        document.getElementById('id_password').className = 'uk-input uk-form-width-large'
+    </script>
+
+{% endblock form %}
