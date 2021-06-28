@@ -17,6 +17,11 @@ All the notes uploaded, and downloaded by you are available in your user account
 A moderator account is an account with special previliges to upload, edit or delete notes on this site.
 
 
+## Technologies used
+  - HTML
+  - CSS and JavaScript from a UI framework called UIKit
+  - Django
+
 ## Releases
 
 You can check out the site [here.](https://kitcclub.herokuapp.com/)
