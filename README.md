@@ -1,6 +1,6 @@
 # KIT hub
 
-A single portal for students and teachers to share classwork.
+A single portal for students and teachers to share classwork. Built using Django.
 
 ## Features
 
